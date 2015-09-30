@@ -4,29 +4,41 @@
 # @author: Daniele Gazzelloni <daniele@danielegazzelloni.com>
 ######################################################################
 
-db = mongoose.connect(config.db_hostname).connection
+mongoose  = require('mongoose')
+config    = require('./config')
 
+
+# Our db connection
+db = mongoose.connect(config.dbHostname)
+db = mongoose.connection
 
 # Customers schema and model objects
-this.schemas = {}
-this.models  = {}
+schemas = {}
+models  = {}
 
 
 
 # Initialize Mongo schemas and models
 exports.initData = (callback) ->
 
-  this.schemas.customer = new mongoose.Schema({
+  schemas.customers = new mongoose.Schema({
     name: {type: String},
     email: {type: String},
     barber: {type: String}
   });
 
   # Init models
-  this.models.Customer = mongoose.model("Customer", schemas.customer);
+  models.Customers = mongoose.model("Customers", schemas.customers);
 
   # call the callback
   callback()
+
+
+
+# Module exports
+exports.schemas     = schemas
+exports.models      = models
+exports.connection  = db
 
 
 

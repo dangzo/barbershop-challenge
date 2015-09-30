@@ -43,4 +43,7 @@ app.listen port, () ->
 db.connection.on "open", (callback) ->
   # Init Mongo models and schemas
   db.initData () ->
-    logger.log("*", "successfully connected to "+config.db_hostname+" (Mongo).")
+    logger.log("*", "successfully connected to "+config.dbHostname+" (Mongo).")
+
+db.connection.on "error", (callback) ->
+  logger.log("*", "error connecting to "+config.dbHostname+" (Mongo)")

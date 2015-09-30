@@ -42,12 +42,12 @@ You can start the back-end with:
     
 ## How it works
 
-There is only one active API, `http://localhost:8081/customers`
+There is only one active API, `http://localhost:8881/customers`
 
     
 1. To get a specific customer in detail, call it with the `id` parameter:
 
-        http://localhost:8081/customers?id=12345
+        http://localhost:8881/customers?id=12345
 
     This time you will get a single element:
 
@@ -75,4 +75,7 @@ There is only one active API, `http://localhost:8081/customers`
 
 
 ## Tests
-(update soon)
+Just run:
+
+    $ npm test
+ 

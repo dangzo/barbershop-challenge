@@ -43,13 +43,13 @@ serveRoutes = (app) ->
 
   app.get config.customersAPI, (req, res) ->
     logger.log ">", "#{config.customersAPI} (GET) called."
-    customers.processVerb req, "GET", (verb, status, result) ->
-      res.status(status).send(result)
+    customers.processVerb req, "GET", (status, result) ->
+      res.status(status).json(result)
 
   app.post config.customersAPI, (req, res) ->
     logger.log ">", "#{config.customersAPI} (POST) called."
-    customers.processVerb req, "POST", (verb, status, result) ->
-      res.status(status).send(result)
+    customers.processVerb req, "POST", (status, result) ->
+      res.status(status).json(result)
 
 
 
