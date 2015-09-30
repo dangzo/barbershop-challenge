@@ -44,22 +44,8 @@ You can start the back-end with:
 
 There is only one active API, `http://localhost:8081/customers`
 
-1. To get a list of customers, just call it as it is:
     
-        http://localhost:8081/customers    
-    
-    You will get an array of customers in the following format:
-    
-        [
-            {
-                id: <int>,
-                name: <string>,
-                email: <string>,
-                barber: <string>
-            }
-        ]
-    
-2. To get a specific customer in detail, call it with the `id` parameter:
+1. To get a specific customer in detail, call it with the `id` parameter:
 
         http://localhost:8081/customers?id=12345
 
@@ -73,12 +59,19 @@ There is only one active API, `http://localhost:8081/customers`
         }
 
     
+2. To add a customer entry send a POST call to the same API with these parameters:
+
+    - `name (string)` : mandatory, it's our customer name.
+    - `email (string)` : mandatory, it's our customer email.
+    - `barber (string)` : optional, it's the preferred barber.
+    
+    
 3. To edit customers details send a POST call to the same API with these parameters:
 
     - `id (int)` : mandatory, it is the customer id we want to edit.
     - `name (string)` : optional, it's our customer name.
     - `email (string)` : optional, it's our customer email.
-    - `barber (string)` : optional, it's the preferred barber. If it's null or empty, an error is returned.
+    - `barber (string)` : optional, it's the preferred barber.
 
 
 ## Tests

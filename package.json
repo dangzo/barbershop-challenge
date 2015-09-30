@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "express": "^4.13.3",
+    "mongoose": "*",
     "coffee-script": "^1.9.3",
     "body-parser": ">=1.13.3"
   }

@@ -1,15 +1,16 @@
 ##
-# Main configuration settings
+# Configuration settings
 #
 # @author: Daniele Gazzelloni <daniele@danielegazzelloni.com>
 ######################################################################
 
 
 # General settings
-appName                   = "coffee-skeleton"
-serverPort                = 8881
+exports.appName                   = "barbershop-challenge"
+exports.serverPort                = 8881
+exports.serverUrl                 = "http://localhost:#{this.serverPort}"
+exports.customersAPI              = "/customers"
 
-
-# Module exports
-exports.serverPort        = serverPort
-exports.appName           = appName
+# MongoDB settings
+exports.dbName                     = "barbershop-challenge"
+exports.dbHostname                 = "mongodb://localhost/#{this.dbName}"
