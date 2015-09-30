@@ -1,8 +1,7 @@
 
 ##
 # Routing.
-# This module can be included in any express app without generating conflicts.
-# Just pass express() through variable to serveRoutes().
+# GET and POST APIs here.
 #
 # @author: Daniele Gazzelloni <daniele@danielegazzelloni.com>
 ######################################################################
@@ -15,13 +14,14 @@ express       = require 'express'
 bodyParser    = require 'body-parser'
 config        = require './config'
 logger        = require './logger'
+customers     = require './customers'
 
 
 # Restrict Access-Control directives as your needs
 allowCrossDomain = (req, res, next) ->
   res.header "Access-Control-Allow-Origin", "*"
   res.header "Access-Control-Allow-Credentials", "true"
-  res.header 'Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE'
+  res.header 'Access-Control-Allow-Methods', 'GET,POST'
   res.header "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"
   next();
 
@@ -35,18 +35,21 @@ serveRoutes = (app) ->
 
   app.use allowCrossDomain
   app.use bodyParser.json({limit: '25mb'})
-  app.use bodyParser.urlencoded({ extended: false, limit: '25mb' })
+  app.use bodyParser.urlencoded({ extended: false, limit: '5mb' })
 
-
-  # Serve the html directory as static
-  app.use '/', express.static("#{__dirname}/../../frontend/build")
 
   ## ROUTES
   ## ==============================================
 
-  app.get '/test', (req, res) ->
-    logger.log ">", "test service called."
-    res.send "It works!"
+  app.get config.customersAPI, (req, res) ->
+    logger.log ">", "#{config.customersAPI} (GET) called."
+    customers.processVerb req, "GET", (verb, status, result) ->
+      res.status(status).send(result)
+
+  app.post config.customersAPI, (req, res) ->
+    logger.log ">", "#{config.customersAPI} (POST) called."
+    customers.processVerb req, "POST", (verb, status, result) ->
+      res.status(status).send(result)
 
 
 

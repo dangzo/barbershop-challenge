@@ -1,8 +1,8 @@
 ##
-# Testing this api:
+# Testing API:
 #   "http://localhost:8081/customers"
 #
-# See README.md for detailed info
+# See README.md for detailed info.
 #
 # @author: Daniele Gazzelloni <daniele@danielegazzelloni.com>
 ######################################################################

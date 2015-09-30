@@ -16,6 +16,7 @@ express       = require 'express'
 config        = require './config'
 logger        = require './logger'
 routing       = require './routing'
+db            = require './db'
 
 app           = express()
 port          = process.env.PORT || config.serverPort;
@@ -27,8 +28,19 @@ routing.serveRoutes(app)
 
 
 
-## STARTS SERVER
+## STARTING BACK-END SERVER
 ## ==============================================
 
 app.listen port, () ->
   logger.log "*", "listening on port #{this.address().port}."
+
+
+
+
+## STARTING DB (Mongo)
+## ==============================================
+
+db.connection.on "open", (callback) ->
+  # Init Mongo models and schemas
+  db.initData () ->
+    logger.log("*", "successfully connected to "+config.db_hostname+" (Mongo).")
