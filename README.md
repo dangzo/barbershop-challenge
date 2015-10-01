@@ -47,15 +47,16 @@ There is only one active API, `http://localhost:8881/customers`
     
 1. To get a specific customer in detail, call it with the `id` parameter:
 
-        http://localhost:8881/customers?id=12345
+        http://localhost:8881/customers?id=560d085be4df72a0136d9b55
 
     This time you will get a single element:
 
         {
-            id: <int>,
+            _id: <string>,
             name: <string>,
             email: <string>,
-            barber: <string>
+            barber: <string>,
+            __v: <int>
         }
 
     
@@ -68,7 +69,7 @@ There is only one active API, `http://localhost:8881/customers`
     
 3. To edit customers details send a POST call to the same API with these parameters:
 
-    - `id (int)` : mandatory, it is the customer id we want to edit.
+    - `id (string)` : mandatory, it is the customer id we want to edit.
     - `name (string)` : optional, it's our customer name.
     - `email (string)` : optional, it's our customer email.
     - `barber (string)` : optional, it's the preferred barber.

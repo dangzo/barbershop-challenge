@@ -126,7 +126,7 @@ describe 'Customers API unit test', ->
     .end (err, res) ->
 
       if err then test.fail(err.message)
-      
+
       res.body.name.should.equal(customerWithId.name)
       res.body.email.should.equal(customerWithId.email)
       res.body.barber.should.equal(customerWithId.barber)
