@@ -44,12 +44,14 @@ serveRoutes = (app) ->
   app.get config.customersAPI, (req, res) ->
     logger.log ">", "#{config.customersAPI} (GET) called."
     customers.processVerb req, "GET", (status, result) ->
-      res.status(status).json(result)
+      res.status(status.error)
+      res.json(result)
 
   app.post config.customersAPI, (req, res) ->
     logger.log ">", "#{config.customersAPI} (POST) called."
     customers.processVerb req, "POST", (status, result) ->
-      res.status(status).json(result)
+      res.status(status.error)
+      res.json(result)
 
 
 
